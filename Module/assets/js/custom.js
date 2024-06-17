@@ -7,5 +7,5 @@ const queryHome = async () => {
 }
 
 queryHome().then((data)=>{
-    console.log(data);
+    // console.log(data);
 });
