@@ -25,7 +25,7 @@ const renderDevice = (list) => {
     slideDevice(); // Gọi hàm slideDevice sau khi render dữ liệu
 };
 
-const queryDevice = async () => {
+const queryDevice = async() => {
     const data = await queryHome();
     // console.log(data);
     const dataAfcLayoutFilter = data.filter(item => {
@@ -46,7 +46,7 @@ const queryDevice = async () => {
     renderDevice(dataDevice); // Gọi hàm renderDevice sau khi lấy dữ liệu
 };
 
-function slideDevice() {   
+function slideDevice() {
     const items = document.querySelectorAll(".device_drg_1_0_0__item");
     const dots = document.createElement("div");
     dots.classList.add("device_drg_1_0_0__dots");
@@ -61,18 +61,19 @@ function slideDevice() {
     document.querySelector(".device_drg_1_0_0__slide").appendChild(dots);
     let currentSlide = 0;
     showSlide(currentSlide);
+
     function showSlide(index) {
         items.forEach((item) => {
             item.style.display = "none";
         });
-        items[index].style.display = "flex";
+        items[index].style.display = "grid";
         const dotItems = document.querySelectorAll(".device_drg_1_0_0__dot");
         dotItems.forEach((dot) => {
             dot.classList.remove("active");
         });
         dotItems[index].classList.add("active");
         currentSlide = index;
-    }   
+    }
 }
 
 queryDevice();
