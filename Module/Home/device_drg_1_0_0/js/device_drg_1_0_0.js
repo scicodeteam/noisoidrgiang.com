@@ -14,7 +14,7 @@ const renderDevice = (list) => {
                 </a>
             </div>
             <div class="device_drg_1_0_0__pic">
-                <img width="766" height="510" src="${defaultItem.imgSlide}" alt="">
+                <img width="766" height="510" src="${defaultItem.imgSlide}" alt="${defaultItem.title}">
             </div>
         </div>
     `;
@@ -29,12 +29,11 @@ function slideDevice(list) {
     const dotItems = [];
     list.forEach((item, index) => {
         const dot = document.createElement("span");
-        
+
         if (index == 0) {
             dot.classList.add("device_drg_1_0_0__dot");
             dot.classList.add("active");
-        }
-        else {
+        } else {
             dot.classList.add("device_drg_1_0_0__dot");
         }
 
@@ -54,7 +53,7 @@ function slideDevice(list) {
     // Chạy tự động
     let count = 0;
     setInterval(() => {
-        showSlide(count, list);      
+        showSlide(count, list);
         // Xử lý active dot
         let dots = document.querySelectorAll('.device_drg_1_0_0__dot');
         dots.forEach((dot) => {
@@ -64,10 +63,10 @@ function slideDevice(list) {
 
         // Tăng index cho slide
         count += 1;
-        if(count > list.length - 1){
+        if (count > list.length - 1) {
             count = 0;
         }
-    }, 5000) 
+    }, 5000)
 }
 
 function showSlide(index, list) {
@@ -85,12 +84,12 @@ function showSlide(index, list) {
             </a>
         </div>
         <div class="device_drg_1_0_0__pic">
-            <img width="766" height="510" src="${list[index].imgSlide}" alt="">
+            <img width="766" height="510" src="${list[index].imgSlide}" alt="${list[index].title}">
         </div>
     `;
 }
 
-const queryDevice = async () => {
+const queryDevice = async() => {
     const data = await queryHome();
     const dataAfcLayoutFilter = data.filter(item => {
         return item.acf_fc_layout === "device_drg_1_0_0";
