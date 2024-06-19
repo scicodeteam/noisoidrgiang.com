@@ -13,6 +13,7 @@
         display: block;
         margin: 40px auto;
     }
+
     &__tabs {
         display: flex;
         align-items: center;
@@ -20,12 +21,66 @@
         gap: 60px;
         margin-bottom: 30px;
     }
+
     &__itemTab {
         color: #ccc;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+
         &.active {
             color: #2C3E50;
-            text-decoration: dashed;
+            border-bottom: 1px solid #2C3E50;
+        }
+    }
+
+    &__box {
+        display: flex;
+        gap: 20px;
+    }
+
+    &__video {
+        position: relative;
+    }
+
+    &__play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(217 217 217 / 40%);
+        padding: 10px 30px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all .3s linear;
+
+        &:hover {
+            background-color: #e23131;
+            transition: all .3s linear;
+        }
+    }
+
+    &__titleVideo {
+        color: #166734;
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+
+    &__desc {
+        font-size: 1rem;
+        margin: 15px 0 50px 0;
+    }
+
+    &__btn {
+        background: #21AA50;
+        color: #fff;
+        padding: 5px 35px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all .3s linear;
+
+        &:hover {
+            background: #166734;
+            transition: all .3s linear;
         }
     }
 }
