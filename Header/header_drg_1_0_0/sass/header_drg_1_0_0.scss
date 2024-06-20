@@ -1,0 +1,238 @@
+.header_drg_1_0_0 {
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  &__top {
+    background-color: #eaf5ed;
+    padding: 10px 0;
+  }
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__toggle {
+    display: none;
+  }
+  &__logo {
+    margin: 0;
+    max-width: 167px;
+    width: 100%;
+  }
+  &__search {
+    position: relative;
+    border: 1px solid #abb2b9;
+    border-radius: 55px;
+    width: 350px;
+    padding: 7px 0;
+    span {
+      color: #abb2b9;
+      font-size: 14px;
+    }
+  }
+  &__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__icon {
+    width: 24px;
+  }
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    background-color: transparent;
+    width: calc(100% - 20px);
+    height: 100%;
+    margin: 0 10px;
+  }
+  &__hotline {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 17px;
+    color: #166734;
+  }
+  &__regis {
+    border: none;
+    background-color: #e9405b;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 55px;
+    padding: 3px 13px;
+    cursor: pointer;
+  }
+  &__searchBtn {
+    display: none;
+  }
+  &__nav {
+    background-color: #21aa50;
+  }
+  &__menu {
+    position: relative;
+  }
+  &__link {
+    position: relative;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+    z-index: 1;
+    &--1 {
+      color: #fff;
+      padding: 10px 0;
+    }
+  }
+  &__submenu {
+    position: absolute;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 #ccc;
+    z-index: 1;
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      li {
+        padding: 5px 10px;
+        text-transform: uppercase;
+        a {
+          width: 100%;
+          display: block;
+        }
+        &:hover {
+          background-color: #e9e8e8;
+        }
+      }
+    }
+  }
+  &__subitem {
+    position: relative;
+  }
+  &__regisMb {
+    display: none;
+  }
+  &__bg {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  @media (max-width: 1024px) {
+    &__toggle {
+      display: block;
+      border: none;
+      background-color: transparent;
+      width: 40px;
+      padding: 0;
+      cursor: pointer;
+    }
+    &__search,
+    &__hotline,
+    &__regis {
+      display: none;
+    }
+    &__searchBtn {
+      display: block;
+      border: none;
+      background-color: transparent;
+      width: 48px;
+      padding: 0;
+      cursor: pointer;
+    }
+    &__nav {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      max-width: 280px;
+      height: 100vh;
+      overflow-y: auto;
+      padding-top: 30px;
+      transform: translateX(-100%);
+      transition: all 0.2s linear;
+      z-index: 1;
+      &.show {
+        transform: translateX(0);
+      }
+      .header_drg_1_0_0__inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .container {
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+    &__menu {
+      width: 100%;
+      &.active {
+        .header_drg_1_0_0__submenu {
+          display: block;
+        }
+      }
+    }
+    &__link {
+      color: #fff;
+      padding: 7px 10px;
+      transition: 0.2s linear all;
+      &--2 {
+        padding-left: 14px;
+      }
+      &--3 {
+        padding-left: 21px;
+      }
+      &:hover {
+        background-color: #166734;
+      }
+    }
+    &__submenu {
+      display: none;
+      position: static;
+      box-shadow: none;
+      width: 100%;
+      background-color: transparent;
+      ul {
+        li {
+          color: #fff;
+          padding: 5px 20px;
+          a {
+            color: #fff;
+          }
+          &:hover {
+            background-color: #166734;
+          }
+        }
+      }
+    }
+    &__regisMb {
+      display: block;
+      border: none;
+      border-radius: 55px;
+      padding: 3px 10px;
+      background-color: #deb407;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 20px 10px 0;
+      cursor: pointer;
+    }
+    &__bg {
+      display: none;
+    }
+    &__backdrop {
+      background-color: rgb(0 0 0 / 40%);
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+  }
+}
