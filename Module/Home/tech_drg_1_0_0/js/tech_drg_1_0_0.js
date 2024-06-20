@@ -20,32 +20,52 @@ const queryTech_drg_1_0_0 = async() => {
     return dataTech_drg_1_0_0;
 };
 
+let i = 1;
 const renderTech_drg_1_0_0 = async() => {
     const dataTech_drg_1_0_0 = await queryTech_drg_1_0_0();
 
+    const mainDiv = document.querySelector('.tech_drg_1_0_0__main');
+    mainDiv.style.minHeight = `${mainDiv.offsetHeight}px`;
+    const elmsTabTech_drg_1_0_0 = document.querySelectorAll('.tech_drg_1_0_0__item');
+    elmsTabTech_drg_1_0_0.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            i = index + 1;
+            const id = item.getAttribute('data-tab');
+            const data = dataTech_drg_1_0_0.filter(item => item.sub === id);
+            renderMainTech_drg_1_0_0(data[0]);
+        })
+    });
+    
+    setInterval(() => {
+        if(i > 2) i = 0;
+        renderMainTech_drg_1_0_0(dataTech_drg_1_0_0[i]);
+        i++;
+    }, 6000)
+};
+
+const renderMainTech_drg_1_0_0 = data => {
     const elmsTabTech_drg_1_0_0 = document.querySelectorAll('.tech_drg_1_0_0__item');
     elmsTabTech_drg_1_0_0.forEach(item => {
-        item.addEventListener('click', () => {
-            const id = item.getAttribute('data-tab');
-            console.log("id: ", id);
-            const data = dataTech_drg_1_0_0.filter(item => item.sub === id);
-            console.log("data: ", data);
-            document.querySelector('.tech_drg_1_0_0__main').innerHTML = `
-            <div class="tech_drg_1_0_0__content">
-                <div class="tech_drg_1_0_0__title">${data[0].title}</div>
-                <div class="tech_drg_1_0_0__text">
-                    ${data[0].content}
-                </div>
-            </div>
-            <div class="tech_drg_1_0_0__image">
-                <picture>
-                    <source media="(max-width: 768px)" srcset="images/${data[0].image}">
-                    <img width="463" height="588" src="${data[0].image}" alt="">
-                </picture>
-            </div>
-            `;
-        })
+        item.classList.remove('active');
+        const id = item.getAttribute('data-tab');
+        if(id === data.sub){
+            item.classList.add('active');
+        }
     })
-};
+    document.querySelector('.tech_drg_1_0_0__main').innerHTML = `
+    <div class="tech_drg_1_0_0__content">
+        <div class="tech_drg_1_0_0__title">${data.title}</div>
+        <div class="tech_drg_1_0_0__text">
+            ${data.content}
+        </div>
+    </div>
+    <div class="tech_drg_1_0_0__image">
+        <picture>
+            <source media="(max-width: 768px)" srcset="${data.image}">
+            <img width="463" height="588" src="${data.image}" alt="">
+        </picture>
+    </div>
+    `;
+}
 
 renderTech_drg_1_0_0();
