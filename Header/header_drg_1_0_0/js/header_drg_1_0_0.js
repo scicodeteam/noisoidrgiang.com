@@ -27,12 +27,14 @@ const hoverHeader_drg_1_0_0 = async () => {
     const data = await queryHeader_dhh_1_1_0();
     elmsLv1.forEach(elmLv1 => {
         elmLv1.addEventListener('mousemove', () => {
+            document.querySelector('.header_drg_1_0_0__bg').style.display = 'block';
             const titleCurrent = elmLv1.getAttribute('data-title');
             const dataIndex = data.find(x => x.title === titleCurrent);
             elmLv1.parentNode.querySelector('.header_drg_1_0_0__submenu').innerHTML = dataIndex.submenu;
         });
         document.querySelector('.header_drg_1_0_0__bg').addEventListener('mousemove', () => {
             elmLv1.parentNode.querySelector('.header_drg_1_0_0__submenu').innerHTML = '';
+            document.querySelector('.header_drg_1_0_0__bg').style.display = 'none';
         });
     });
 };
@@ -47,23 +49,84 @@ const clickHeader_drg_1_0_0 = async () => {
     });
 }
 
+const renderSearchHeader_drg_1_0_0 = () => {
+    document.body.insertAdjacentHTML("beforeend", `
+        <div class="header_drg_1_0_0__modalSearch modal" id="search-header" style="display: flex;">
+            <div class="modal-bg" onclick="closeSearchHeader_drg_1_0_0()"></div>
+            <div class="modal-box animate-zoom">
+                <div class="modal-header">
+                    <div class="modal-close" onclick="closeSearchHeader_drg_1_0_0()">×</div>
+                    <div class="header_drg_1_0_0__modalTitle">Tìm Kiếm Nhanh</div>
+                </div>
+                <div class="modal-body">	
+                    <div class="header_drg_1_0_0__modalGroup">
+                        <input type="text" placeholder="Nhập từ khóa tìm kiếm">
+                        <button type="submit">	
+                            <img width="48" height="48" src="images/icon-search-light.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    `);
+};
+
+const closeSearchHeader_drg_1_0_0 = () => {
+    document.querySelector('#search-header').remove();
+}
+
 const header_dhh_1_1_0 = () => {
     if (window.innerWidth > 1024) {
+        document.querySelector('.header_drg_1_0_0__input').addEventListener('focusin', () => {
+            document.querySelector('.header_drg_1_0_0__placeholder').style.visibility = 'hidden';
+        });
+        document.querySelector('.header_drg_1_0_0__input').addEventListener('focusout', () => {
+            document.querySelector('.header_drg_1_0_0__input').value = '';
+            document.querySelector('.header_drg_1_0_0__placeholder').style.visibility = 'visible';
+        });
+
         hoverHeader_drg_1_0_0();
     } else {
         document.querySelector('.header_drg_1_0_0__toggle').addEventListener('click', () => {
             document.querySelector('.header_drg_1_0_0__nav').classList.add('show');
             document.querySelector('.header_drg_1_0_0__backdrop').style.display = 'block';
+            document.getElementsByTagName('html')[0].style.overflow = 'hidden';
         });
         document.querySelector('.header_drg_1_0_0__backdrop').addEventListener('click', () => {
             document.querySelector('.header_drg_1_0_0__nav').classList.remove('show');
             document.querySelector('.header_drg_1_0_0__backdrop').style.display = 'none';
+            document.getElementsByTagName('html')[0].style.overflow = 'auto';
         });
+
         clickHeader_drg_1_0_0();
     }
 };
 
+function debounce(func) {
+    var timer;
+    return function (event) {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(func, 100, event);
+    };
+}
+
+document.querySelector('.header_drg_1_0_0__searchBtn').addEventListener('click', () => renderSearchHeader_drg_1_0_0());
+
 header_dhh_1_1_0();
-window.addEventListener('resize', () => header_dhh_1_1_0());
+
+window.addEventListener("resize", debounce(function (e) {
+    header_dhh_1_1_0();
+}));
+
+let prevScrollPos = window.pageYOffset;
+window.addEventListener('scroll', () => {
+    const currentScrollPos = window.pageYOffset;
+    if (prevScrollPos > currentScrollPos) {
+        document.querySelector('.header_drg_1_0_0').classList.add('show');
+    } else {
+        document.querySelector('.header_drg_1_0_0').classList.remove('show');
+    }
+    prevScrollPos = currentScrollPos;
+})
 
 
