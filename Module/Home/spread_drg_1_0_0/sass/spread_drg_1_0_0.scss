@@ -1,0 +1,43 @@
+.spread_drg_1_0_0 {
+  padding: 20px 0;
+  &__title {
+    color: #166734;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    span {
+      color: #e9405b;
+    }
+  }
+  &__slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    margin-top: 15px;
+  }
+  &__track {
+    display: flex;
+    will-change: transform;
+  }
+  &__item {
+    width: 150px;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+  &__init{
+    background-color: gray;
+    width: 100vw;
+    height: 150px;
+  }
+}
