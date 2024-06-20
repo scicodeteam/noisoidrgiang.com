@@ -1,12 +1,15 @@
 .header_drg_1_0_0 {
   width: 100%;
-  position: fixed;
-  top: -100px;
-  visibility: hidden;
-  transition: all 0.2s linear;
-  &.show{
+  &.fixToTop{
+    transition: all 0.2s ease-in-out;
+    position: fixed;
     top: 0;
-    visibility: visible;
+  }
+  &.valueTop{
+    top: -142px !important;
+  }
+  &.nonTop{
+    animation: aniNontop 0.3s ease-in-out;
   }
   img {
     width: 100%;
@@ -67,12 +70,16 @@
   }
   &__regis {
     border: none;
-    background-color: #e9405b;
+    background-color: #e64a64;
     color: #fff;
     text-transform: uppercase;
     border-radius: 55px;
     padding: 3px 13px;
+    transition: all 0.2s linear;
     cursor: pointer;
+    &:hover{
+      background-color: #da0a2d;
+    }
   }
   &__searchBtn {
     display: none;
@@ -91,7 +98,11 @@
     z-index: 1;
     &--1 {
       color: #fff;
-      padding: 10px 0;
+      padding: 10px;
+      transition: all 0.2s linear;
+      &:hover{
+        background-color: #166734;
+      }
     }
   }
   &__submenu {
@@ -137,11 +148,17 @@
     }
   }
   @media (max-width: 1024px) {
+    &.valueTop{
+      top: -80px !important;
+    }
+    &__logo{
+      max-width: 125px;
+    }
     &__toggle {
       display: block;
       border: none;
       background-color: transparent;
-      width: 40px;
+      width: 30px;
       padding: 0;
       cursor: pointer;
     }
@@ -154,7 +171,7 @@
       display: block;
       border: none;
       background-color: transparent;
-      width: 48px;
+      width: 38px;
       padding: 0;
       cursor: pointer;
     }
@@ -166,10 +183,10 @@
       max-width: 280px;
       height: 100vh;
       overflow-y: auto;
-      padding-top: 30px;
+      padding-top: 15px;
       transform: translateX(-100%);
       transition: all 0.2s linear;
-      z-index: 1;
+      z-index: 2;
       &.show {
         transform: translateX(0);
       }
@@ -193,7 +210,7 @@
     }
     &__link {
       color: #fff;
-      padding: 7px 10px;
+      padding: 7px 15px;
       transition: 0.2s linear all;
       &--2 {
         padding-left: 14px;
@@ -201,8 +218,8 @@
       &--3 {
         padding-left: 21px;
       }
-      &:hover {
-        background-color: #166734;
+      &:hover{
+        background-color: transparent;
       }
     }
     &__submenu {
@@ -210,7 +227,8 @@
       position: static;
       box-shadow: none;
       width: 100%;
-      background-color: transparent;
+      background-color: #166734;
+      padding: 5px 0;
       ul {
         li {
           color: #fff;
@@ -219,7 +237,7 @@
             color: #fff;
           }
           &:hover {
-            background-color: #166734;
+            background-color: transparent;
           }
         }
       }
@@ -246,6 +264,7 @@
       top: 0;
       left: 0;
       display: none;
+      z-index: 1;
     }
     &__modalSearch{
       padding-top: 10%;
@@ -291,5 +310,16 @@
         }
       }
     }
+  }
+}
+
+@keyframes aniNontop {
+  0%{
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
