@@ -13,7 +13,8 @@ const queryTech_drg_1_0_0 = async() => {
             sub: splitData[0],
             info: splitData[1],
             title: splitData[2],
-            image: splitData[3]
+            imagePC: splitData[3],
+            imageMB: splitData[4]
         };
         dataTech_drg_1_0_0.push(itemTech_drg_1_0_0);
     });
@@ -61,8 +62,8 @@ const renderMainTech_drg_1_0_0 = data => {
     </div>
     <div class="tech_drg_1_0_0__image">
         <picture>
-            <source media="(max-width: 768px)" srcset="${data.image}">
-            <img width="463" height="588" src="${data.image}" alt="">
+            <source media="(max-width: 768px)" srcset="${data.imageMB}">
+            <img width="463" height="588" src="${data.imagePC}" alt="">
         </picture>
     </div>
     `;
