@@ -1,9 +1,11 @@
 .header_drg_1_0_0 {
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 .header_drg_1_0_0.fixToTop {
   transition: all 0.2s ease-in-out;
-  position: fixed;
   top: 0;
 }
 .header_drg_1_0_0.valueTop {
@@ -103,7 +105,7 @@
   padding: 10px;
   transition: all 0.2s linear;
 }
-.header_drg_1_0_0__link--1:hover {
+.header_drg_1_0_0__link--1.active, .header_drg_1_0_0__link--1:hover {
   background-color: #166734;
 }
 .header_drg_1_0_0__submenu {

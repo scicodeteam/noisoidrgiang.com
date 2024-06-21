@@ -31,10 +31,12 @@ const hoverHeader_drg_1_0_0 = async () => {
             const titleCurrent = elmLv1.getAttribute('data-title');
             const dataIndex = data.find(x => x.title === titleCurrent);
             elmLv1.parentNode.querySelector('.header_drg_1_0_0__submenu').innerHTML = dataIndex.submenu;
+            elmLv1.classList.add('active');
         });
         document.querySelector('.header_drg_1_0_0__bg').addEventListener('mousemove', () => {
             elmLv1.parentNode.querySelector('.header_drg_1_0_0__submenu').innerHTML = '';
             document.querySelector('.header_drg_1_0_0__bg').style.display = 'none';
+            elmLv1.classList.remove('active');
         });
     });
 };
@@ -127,14 +129,12 @@ let prevScrollpos = window.pageYOffset;
 
 window.addEventListener('scroll', () => {
     let currentScrollPos = window.pageYOffset;
-    if(currentScrollPos > divHeaderHeight){
+    if (currentScrollPos > divHeaderHeight) {
         divHeader.classList.add('fixToTop', 'valueTop');
-        divHeader.classList.remove('nonTop');
     }
-    if (prevScrollpos > currentScrollPos ){
-        if (prevScrollpos < divHeaderHeight){
+    if (prevScrollpos > currentScrollPos) {
+        if (prevScrollpos < divHeaderHeight) {
             divHeader.classList.remove('fixToTop');
-            divHeader.classList.add('nonTop');
         } else {
             divHeader.classList.remove('valueTop');
         }
