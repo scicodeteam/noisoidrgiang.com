@@ -4,12 +4,12 @@ const renderDataCustomer = (data, tabName) => {
     })
 
     let html = `
-        <div class="customer_drg_1_0_0__video">
+        <a href="${mainCustomer[0].link}" class="customer_drg_1_0_0__video">
             <img width="657" height="356" src="${mainCustomer[0].thumb}" alt="${mainCustomer[0].title}">
             <div class="customer_drg_1_0_0__play">
                 <img width="21" height="29" src="images/icon-play.png" alt="icon play">
             </div>
-        </div>
+        </a>
         <div class="customer_drg_1_0_0__content">
             <div class="customer_drg_1_0_0__titleVideo">
                 ${mainCustomer[0].title}
