@@ -1,0 +1,50 @@
+.doctorDegree_drg_1_0_0 {
+    margin: 40px 0;
+
+    &__title {
+        color: #166734;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    &__boxSlide {
+        position: relative;
+    }
+
+    &__slide {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+        padding: 10px 30px;
+        scroll-snap-type: x mandatory;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    &__pic {
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        width: 100%;
+        position: absolute;
+        top: 35%;
+    }
+
+    &__prev,
+    &__next {
+        cursor: pointer;
+        font-size: 25px;
+        color: #166734;
+    }
+}
