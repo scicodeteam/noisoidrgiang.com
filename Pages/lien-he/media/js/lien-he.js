@@ -20,7 +20,8 @@ if (document.querySelector('.screen2')) {
                 document.querySelector('input[type="submit"]').value = "Đang gửi thông tin...";
                 document.querySelector('input[type="submit"]').classList.add('sending');
                 // sendForm(data, '/dang-ky-thanh-cong');
-                console.log(data);
+                sendAPI(data, '/dang-ky-thanh-cong');
+                // console.log(data);
             }
             else {
                 console.log('NOT SPAM!!!', document.querySelector('#screen2 input[name="email"]').value)
