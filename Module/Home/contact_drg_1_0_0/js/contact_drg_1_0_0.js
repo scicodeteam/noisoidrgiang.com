@@ -20,6 +20,7 @@ if (document.querySelector('.contact_drg_1_0_0')) {
                 document.querySelector('input[type="submit"]').value = "Đang gửi thông tin...";
                 document.querySelector('input[type="submit"]').classList.add('sending');
                 // sendForm(data, '/dang-ky-thanh-cong');
+                sendAPI(data, '/dang-ky-thanh-cong');
                 console.log(data);
             }
             else {
