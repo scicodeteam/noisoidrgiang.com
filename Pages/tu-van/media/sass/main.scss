@@ -1,0 +1,239 @@
+.screen1 {
+    padding: 30px 0;
+    background: #eaf5ed;
+
+    &__title {
+        color: #166734;
+        font-weight: 600;
+        font-size: 1.3rem;
+        border-bottom: 1px solid #166734;
+        padding-bottom: 3px;
+        margin-bottom: 20px;
+        width: fit-content;
+    }
+
+    &__box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    &__boxLeft {
+        background: #21AA50;
+        padding: 20px;
+        width: 40%;
+        border-radius: 20px;
+    }
+
+    &__boxInfo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    &__pic {
+        width: 130px;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    &__name {
+        font-size: 1rem;
+        color: #fff;
+        text-align: center;
+
+        b {
+            font-size: 1.2rem;
+        }
+
+        span {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #E9405B;
+        }
+    }
+
+    &__titleForm {
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.4rem;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    &__inputBox {
+
+        input,
+        textarea {
+            width: 100%;
+            margin-bottom: 4px;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid #fff;
+            padding: 10px;
+            border-radius: 8px;
+            background: unset;
+            margin-bottom: 10px;
+
+        }
+
+        textarea {
+            margin-bottom: 4px;
+            resize: none;
+            height: 130px;
+        }
+    }
+
+    &__btnSend {
+        input {
+            width: fit-content;
+            background: #DEB407;
+            color: #fff;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 auto;
+            display: block;
+            padding: 6px;
+
+            &.sending {
+                background: gray;
+                border: 1px solid gray;
+                width: fit-content;
+            }
+        }
+    }
+
+    .form-group.invalid input {
+        border: 1px solid red;
+    }
+
+    .form-message {
+        color: red;
+        text-align: left;
+        padding: 0 0 3px 0;
+        font-size: 13px;
+    }
+
+    &__boxRight {
+        flex: 1;
+    }
+
+    &__titleQA {
+        color: #166734;
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    &__itemQA {
+        margin-bottom: 20px;
+    }
+
+    &__boxQuestion {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    &__question,
+    &__boxAnswer {
+        width: 80%;
+        background: #fff;
+        border: 1px solid #166734;
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    &__boxAnswer {
+        padding-bottom: 32px;
+        display: none;
+    }
+
+    &__nameQA {
+        float: right;
+        color: #ABB2B9;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    &__answer {
+        flex: 1;
+    }
+
+    &__picQA {
+        width: 60px;
+        margin-left: 6px;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    &__seeMore {
+        font-size: 12px;
+        color: #21AA50;
+        margin-top: 8px;
+        cursor: pointer;
+    }
+
+    .dots-container {
+        margin-left: 250px;
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border: 1px solid #166734;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+
+            &.active {
+                background-color: #166734;
+            }
+        }
+    }
+
+    @media (max-width: 900px) {
+        &__boxLeft {
+            width: 50%;
+        }
+
+        &__question {
+            width: 70%;
+        }
+
+        .dots-container {
+            margin-left: 100px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        &__boxLeft {
+            width: 100%;
+        }
+
+        &__question,
+        &__boxAnswer {
+            width: 75%;
+        }
+
+        .dots-container {
+            margin-left: unset;
+            text-align: center;
+        }
+    }
+}
