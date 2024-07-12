@@ -57,7 +57,7 @@ function showDots() {
             showSlide(currentSlide);
             highlightDot();
             seeMoreQA(); // Gọi hàm seeMoreQA() sau khi chuyển đổi slide
-            resetAutoSlide();
+            // resetAutoSlide();
         });
         dotsContainer.appendChild(dot);
     }
@@ -89,7 +89,7 @@ function autoSlide() {
 
 function resetAutoSlide() {
     clearInterval(autoSlideInterval);
-    autoSlide();
+    // autoSlide();
 }
 
 // Click xem câu trả lời
@@ -110,4 +110,4 @@ function seeMoreQA() {
 showSlide(currentSlide);
 showDots();
 seeMoreQA();
-autoSlide()
+// autoSlide();

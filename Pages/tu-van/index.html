@@ -57,6 +57,10 @@
                                                 <div class="form-message"></div>
                                             </div>
                                             <div class="form-group">
+                                                <input id="iage" name="iage" type="textbox" placeholder="Số tuổi:">
+                                                <div class="form-message"></div>
+                                            </div>
+                                            <div class="form-group">
                                                 <textarea name="inote"
                                                     placeholder="Nội dung bạn cần tư vấn:"></textarea>
                                                 <div class="form-message"></div>
@@ -104,7 +108,7 @@
                 Validator.isRequired('input[name="imob"]'),
                 Validator.isMobile('input[name="imob"]'),
                 Validator.addInput('textarea[name="itext"]', () => {
-                    return 'Nội dung khách hàng cần tư vấn: ' + document.querySelector('#screen1 textarea[name="inote"]').value;
+                    return 'Nội dung khách hàng cần tư vấn: ' + document.querySelector('#screen1 textarea[name="inote"]').value + '- Số tuổi của khách hàng: ' + document.querySelector('#screen1 input[name="iage"]').value;
                 }),
             ],
             onSubmit: function (data) {
@@ -113,8 +117,8 @@
                     document.querySelector('input[type="submit"]').value = "Đang gửi thông tin...";
                     document.querySelector('input[type="submit"]').classList.add('sending');
                     // sendForm(data, '/dang-ky-thanh-cong');
-                    sendAPI(data, '/dang-ky-thanh-cong');
-                    // console.log(data);
+                    // sendAPI(data, '/dang-ky-thanh-cong');
+                    console.log(data);
                 }
                 else {
                     console.log('NOT SPAM!!!', document.querySelector('#screen1 input[name="email"]').value)
