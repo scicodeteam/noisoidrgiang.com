@@ -84,7 +84,9 @@
                         CÂU HỎI ĐÃ ĐƯỢC TRẢ LỜI
                     </div>
                     <div class="screen1__boxQA" id="screen1__boxQA">
+                        <div class="loading">
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,95 +96,77 @@
 
 <script src="https://noisoidrgiang.com/css/lib/js_v2.min.js"></script>
 <script src="https://noisoidrgiang.com/css/lib/module.min.js"></script>
-<script>
-    document.querySelector('.screen1 input[name="first_link"]').value = document.URL;
-    document.querySelector('.screen1 input[name="website"]').value = document.referrer;
-    // Validate Form
-    if (document.querySelector('.screen1')) {
-        Validator({
-            form: '#screen1',
-            errorSelector: '.form-message',
-            formGroupSelector: '.form-group',
-            rules: [
-                Validator.isRequired('input[name="iname"]'),
-                Validator.isRequired('input[name="imob"]'),
-                Validator.isMobile('input[name="imob"]'),
-                Validator.addInput('textarea[name="itext"]', () => {
-                    return 'Nội dung khách hàng cần tư vấn: ' + document.querySelector('#screen1 textarea[name="inote"]').value + '- Số tuổi của khách hàng: ' + document.querySelector('#screen1 input[name="iage"]').value;
-                }),
-            ],
-            onSubmit: function (data) {
-                if (document.querySelector('#screen1 input[name="email"]').value === '') {
-                    document.querySelector('input[type="submit"]').setAttribute("disabled", "");
-                    document.querySelector('input[type="submit"]').value = "Đang gửi thông tin...";
-                    document.querySelector('input[type="submit"]').classList.add('sending');
-                    // sendForm(data, '/dang-ky-thanh-cong');
-                    // sendAPI(data, '/dang-ky-thanh-cong');
-                    console.log(data);
-                }
-                else {
-                    console.log('NOT SPAM!!!', document.querySelector('#screen1 input[name="email"]').value)
-                }
-                document.querySelector('#screen1').reset();
-            }
-        });
-    }
-</script>
 
 <script>
-    const dataQuestion = [
-        {
-            name: "Dương, 32 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis",
-        },
-        {
-            name: "Hà, 52 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis necessitatibus maiores dolorum voluptates iure accusamus nam,",
-        },
-        {
-            name: "Tùng, 44 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis necessitatibus maiores dolorum voluptates iure accusamus nam, illo quos porro vitae? Voluptatibus, cum.",
-        },
-        {
-            name: "Lan, 21 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis necessitatibus maiores dolorum voluptates iure accusamus nam, illo quos porro vitae? Voluptatibus, cum.",
-        },
-        {
-            name: "Giang, 65 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis 2222222222",
-        },
-        {
-            name: "Hùng, 32 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit 3333333",
-        },
-        {
-            name: "Linh, 28 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis necessitatibus maiores dolorum voluptates iure accusamus nam, illo quos porro vitae? Voluptatibus, cum.",
-        },
-        {
-            name: "Bình, 65 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis necessitatibus maiores dolorum voluptates iure accusamus nam, illo quos porro vitae? Voluptatibus, cum.",
-        },
-        {
-            name: "Dương, 32 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis necessitatibus maiores dolorum voluptates iure accusamus nam, illo quos porro vitae? Voluptatibus, cum.",
-        },
-        {
-            name: "Hoàng, 45 tuổi",
-            question: "Em bị táo bón kéo dài, đi ngoài ra máu, phân có lẫn chất nhầy, bụng đau quặn từng cơn là dấu hiệu của bệnh gì ạ.",
-            answer: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore? Unde non ad, ullam, ducimus omnis officiis necessitatibus maiores dolorum voluptates iure accusamus nam, illo quos porro vitae? Voluptatibus, cum.",
-        },
-    ]
+    const queryQuestion = async () => {
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbw_4_0P8apmknO07zjpWDLcSkUk4kGWi3LNEBYmIL74vAk6eq1FIm-LGWYcE523Oo20/exec?action=read');
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            const data = await response.json();
+            return data.records;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return [];
+        }
+    };
+
+    const getID = async () => {
+        const data = await queryQuestion();
+        let listID = [];
+        data.forEach(element => {
+            listID.push(element.ID);
+        });
+        return Math.max(...listID) + 1;
+    }
+
+    const creatAPI = async () => {
+        const id = await getID();
+
+        // Hàm để gửi thông tin từ form và lưu vào API
+        const sendFormDataToAPI = async (formData) => {
+            const response = await fetch(`https://script.google.com/macros/s/AKfycbw_4_0P8apmknO07zjpWDLcSkUk4kGWi3LNEBYmIL74vAk6eq1FIm-LGWYcE523Oo20/exec?callback=ctrlq&name=${formData.iname}&phone=${formData.imob}&date=${formData.iage}&question=${formData.inote}&anser=${formData.answer}&id=${id}&action=insert`);
+            data = await response.json();
+        }
+
+        document.querySelector('.screen1 input[name="first_link"]').value = document.URL;
+        document.querySelector('.screen1 input[name="website"]').value = document.referrer;
+        // Validate Form
+        if (document.querySelector('.screen1')) {
+            Validator({
+                form: '#screen1',
+                errorSelector: '.form-message',
+                formGroupSelector: '.form-group',
+                rules: [
+                    Validator.isRequired('input[name="iname"]'),
+                    Validator.isRequired('input[name="imob"]'),
+                    Validator.isMobile('input[name="imob"]'),
+                    Validator.addInput('textarea[name="itext"]', () => {
+                        return 'Nội dung khách hàng cần tư vấn: ' + document.querySelector('#screen1 textarea[name="inote"]').value + '- Số tuổi của khách hàng: ' + document.querySelector('#screen1 input[name="iage"]').value;
+                    }),
+                ],
+                onSubmit: function (data) {
+                    if (document.querySelector('#screen1 input[name="email"]').value === '') {
+                        document.querySelector('input[type="submit"]').setAttribute("disabled", "");
+                        document.querySelector('input[type="submit"]').value = "Đang gửi thông tin...";
+                        document.querySelector('input[type="submit"]').classList.add('sending');
+                        // sendForm(data, '/dang-ky-thanh-cong');
+                        // sendAPI(data, '/dang-ky-thanh-cong');
+                        sendFormDataToAPI(data);
+                        console.log(data);
+                    }
+                    else {
+                        console.log('NOT SPAM!!!', document.querySelector('#screen1 input[name="email"]').value)
+                    }
+                    document.querySelector('#screen1').reset();
+                }
+            });
+        }
+    }
+    creatAPI();
 </script>
+
 <script src="media/js/tu-van.js"></script>
 <script src="https://noisoidrgiang.com/css/landing/option.min.js"></script>
 

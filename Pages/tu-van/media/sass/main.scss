@@ -126,6 +126,10 @@
         flex: 1;
     }
 
+    &__boxQA {
+        position: relative;
+    }
+
     &__titleQA {
         color: #166734;
         font-weight: 600;
@@ -236,4 +240,17 @@
             text-align: center;
         }
     }
+}
+
+.loading {
+    display: block;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    z-index: 999;
+    background-image: url("../images/loading.gif");
+    background-repeat: no-repeat;
+    background-position: center;
 }
