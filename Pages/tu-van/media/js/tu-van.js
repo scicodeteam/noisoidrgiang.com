@@ -1,23 +1,30 @@
 // Tạo slide QA
 const slideContainer = document.getElementById('screen1__boxQA');
-const totalSlides = Math.ceil(dataQuestion.length / 4);
 let currentSlide = 1;
-let autoSlideInterval;
+let totalSlides;
+let itemsWithAnser = [];
 
-function showSlide(slideIndex) {
+const showSlide = async (slideIndex) => {
+    const data = await queryQuestion();
+    let itemsWithAnser = data.filter(item => item.Anser);
+    totalSlides = Math.ceil(itemsWithAnser.length / 5);
+
     slideContainer.innerHTML = '';
-    const startIndex = (slideIndex - 1) * 4;
-    const endIndex = Math.min(startIndex + 4, dataQuestion.length);
+
+    const startIndex = (slideIndex - 1) * 5;
+    const endIndex = Math.min(startIndex + 5, itemsWithAnser.length);
+
+    let total = '';
 
     for (let i = startIndex; i < endIndex; i++) {
-        const itemQA = dataQuestion[i];
+        const itemQA = itemsWithAnser[i];
         const itemHTML = `
-            <div class="screen1__itemQA" id-question="${i}">
+            <div class="screen1__itemQA" id-question="${itemQA.ID}">
                 <div class="screen1__boxQuestion">
                     <div class="screen1__question">
-                        ${itemQA.question}
+                        ${itemQA.Question}
                         <br>
-                        <span class="screen1__nameQA">${itemQA.name}</span>
+                        <span class="screen1__nameQA">${itemQA.Name}, ${itemQA.Date} tuổi</span>
                     </div>
                     <div class="screen1__answer">
                         <div class="screen1__picQA">
@@ -28,25 +35,26 @@ function showSlide(slideIndex) {
                         </div>
                     </div>
                 </div>
-                <div class="screen1__boxAnswer">
+                <div class="screen1__boxAnswer" style="display: none;">
                     Chào bạn! <br> ------------------------
                     <p class="screen1__textAnswer">
-                        ${itemQA.answer}
+                        ${itemQA.Anser}
                     </p>
                     <span class="screen1__nameQA">TS.BS Đỗ Anh Giang</span>
                 </div>
             </div>
         `;
-        slideContainer.innerHTML += itemHTML;
+        total += itemHTML;
     }
-}
+    slideContainer.innerHTML = total;
+};
 
 // Tạo dots slide
 function showDots() {
     const dotsContainer = document.createElement('div');
     dotsContainer.classList.add('dots-container');
 
-    for (let i = 1; i <= totalSlides; i++) {
+    for (let i = 1; i <= Math.ceil(itemsWithAnser.length / 5); i++) {
         const dot = document.createElement('span');
         dot.classList.add('dot');
         if (i === 1) {
@@ -57,7 +65,6 @@ function showDots() {
             showSlide(currentSlide);
             highlightDot();
             seeMoreQA(); // Gọi hàm seeMoreQA() sau khi chuyển đổi slide
-            // resetAutoSlide();
         });
         dotsContainer.appendChild(dot);
     }
@@ -77,23 +84,8 @@ function highlightDot() {
     });
 }
 
-// Setup slide chạy tự động
-function autoSlide() {
-    autoSlideInterval = setInterval(() => {
-        currentSlide = currentSlide % totalSlides + 1;
-        showSlide(currentSlide);
-        highlightDot();
-        seeMoreQA();
-    }, 6000);
-}
-
-function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    // autoSlide();
-}
-
 // Click xem câu trả lời
-function seeMoreQA() {
+const seeMoreQA = () => {
     const elmsQuestionBtn = document.querySelectorAll('.screen1__seeMore');
     elmsQuestionBtn.forEach(item => {
         item.addEventListener('click', () => {
@@ -105,9 +97,12 @@ function seeMoreQA() {
             }
         });
     });
-}
+};
 
-showSlide(currentSlide);
-showDots();
-seeMoreQA();
-// autoSlide();
+const init = async () => {
+    await showSlide(currentSlide);
+    showDots();
+    seeMoreQA();
+};
+
+init();
