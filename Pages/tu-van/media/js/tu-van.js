@@ -3,19 +3,12 @@ const slideContainer = document.getElementById('screen1__boxQA');
 let currentSlide = 1;
 let totalSlides;
 let itemsWithAnser = [];
-
 const showSlide = async (slideIndex) => {
-    const data = await queryQuestion();
-    let itemsWithAnser = data.filter(item => item.Anser);
     totalSlides = Math.ceil(itemsWithAnser.length / 5);
-
     slideContainer.innerHTML = '';
-
     const startIndex = (slideIndex - 1) * 5;
     const endIndex = Math.min(startIndex + 5, itemsWithAnser.length);
-
     let total = '';
-
     for (let i = startIndex; i < endIndex; i++) {
         const itemQA = itemsWithAnser[i];
         const itemHTML = `
@@ -47,29 +40,34 @@ const showSlide = async (slideIndex) => {
         total += itemHTML;
     }
     slideContainer.innerHTML = total;
+    showDots();
+    seeMoreQA();
 };
 
 // Tạo dots slide
 function showDots() {
-    const dotsContainer = document.createElement('div');
-    dotsContainer.classList.add('dots-container');
-
-    for (let i = 1; i <= Math.ceil(itemsWithAnser.length / 5); i++) {
+    let dotsContainer = document.querySelector('.dots-container');
+    if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+    } else {
+        dotsContainer = document.createElement('div');
+        dotsContainer.classList.add('dots-container');
+        slideContainer.parentNode.appendChild(dotsContainer);
+    }
+    const numDots = Math.ceil(itemsWithAnser.length / 5);
+    for (let i = 1; i <= numDots; i++) {
         const dot = document.createElement('span');
         dot.classList.add('dot');
-        if (i === 1) {
+        if (i === currentSlide) {
             dot.classList.add('active');
         }
         dot.addEventListener('click', () => {
             currentSlide = i;
             showSlide(currentSlide);
             highlightDot();
-            seeMoreQA(); // Gọi hàm seeMoreQA() sau khi chuyển đổi slide
         });
         dotsContainer.appendChild(dot);
     }
-
-    slideContainer.parentNode.appendChild(dotsContainer);
 }
 
 // Active dots
@@ -83,7 +81,6 @@ function highlightDot() {
         }
     });
 }
-
 // Click xem câu trả lời
 const seeMoreQA = () => {
     const elmsQuestionBtn = document.querySelectorAll('.screen1__seeMore');
@@ -100,9 +97,8 @@ const seeMoreQA = () => {
 };
 
 const init = async () => {
+    const data = await queryQuestion();
+    itemsWithAnser = data.filter(item => item.Anser);
     await showSlide(currentSlide);
-    showDots();
-    seeMoreQA();
 };
-
 init();
