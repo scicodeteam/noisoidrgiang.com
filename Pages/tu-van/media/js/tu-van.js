@@ -3,6 +3,7 @@ const slideContainer = document.getElementById('screen1__boxQA');
 let currentSlide = 1;
 let totalSlides;
 let itemsWithAnser = [];
+
 const showSlide = async (slideIndex) => {
     totalSlides = Math.ceil(itemsWithAnser.length / 5);
     slideContainer.innerHTML = '';
@@ -21,7 +22,6 @@ const showSlide = async (slideIndex) => {
                     </div>
                     <div class="screen1__answer">
                         <div class="screen1__picQA">
-                            <img width="77" height="80" class="lazy" data-src="media/images/iconQA.jpg" alt="iconQA">
                         </div>
                         <div class="screen1__seeMore">
                             ➤ Xem trả lời
@@ -99,6 +99,7 @@ const seeMoreQA = () => {
 const init = async () => {
     const data = await queryQuestion();
     itemsWithAnser = data.filter(item => item.Anser);
+    itemsWithAnser.reverse();
     await showSlide(currentSlide);
 };
 init();
