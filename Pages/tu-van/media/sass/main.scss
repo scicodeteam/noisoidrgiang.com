@@ -250,6 +250,8 @@
     background-image: url("../images/loading.gif");
     background-repeat: no-repeat;
     background-position: center;
+    width: 100%;
+    background-size: contain;
 
     @media (max-width: 600px) {
         transform: translate(-50%, -50%);
