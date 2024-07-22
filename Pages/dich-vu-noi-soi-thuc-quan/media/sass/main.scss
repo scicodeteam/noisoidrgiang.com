@@ -363,12 +363,13 @@
         width: 100%;
         border: 1px solid #21AA50;
         border-radius: 15px;
-        padding: 12px;
+        padding: 12px 18px;
     }
 
     &__icon {
-        margin-right: -6px;
+        margin-right: -10px;
         position: relative;
+        width: 30px;
 
         img {
             width: 100%;
