@@ -118,13 +118,14 @@
         &__box {
             flex-direction: column;
             padding: 0;
-            gap: 28px;
+            gap: unset;
         }
 
         &__boxPic {
             width: 100%;
             display: flex;
             gap: unset;
+            margin-bottom: 20px;
         }
 
         &__pic {

@@ -153,6 +153,14 @@
         &__list {
             margin-bottom: 30px;
         }
+
+        &__social {
+            gap: unset;
+        }
+
+        &__imgSocial {
+            margin-right: 12px;
+        }
     }
 
     @media (max-width: 430px) {
