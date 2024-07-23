@@ -102,7 +102,12 @@
         }
 
         &__boxRight {
-            gap: 15px;
+            gap: unset;
+        }
+
+        &__item {
+            padding: 0 10px 10px 10px;
+            width: 50%;
         }
 
         &__pic img {

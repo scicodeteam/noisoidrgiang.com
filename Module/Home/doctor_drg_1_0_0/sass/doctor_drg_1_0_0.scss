@@ -104,7 +104,7 @@
         }
     }
 
-    @media (max-width: 430px) {
+    @media (max-width: 600px) {
         &__title {
             br {
                 display: block;
@@ -124,7 +124,7 @@
         &__boxPic {
             width: 100%;
             display: flex;
-            gap: 10px;
+            gap: unset;
         }
 
         &__pic {
@@ -133,11 +133,15 @@
 
         &__textProfes {
             flex: 1;
+            padding-left: 8px;
         }
 
         &__subTitle {
+            gap: unset;
+
             p {
                 font-size: 1.3rem;
+                padding-left: 15px;
             }
         }
     }

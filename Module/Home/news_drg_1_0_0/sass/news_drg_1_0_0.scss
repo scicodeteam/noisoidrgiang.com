@@ -79,9 +79,17 @@
         }
     }
 
-    @media (max-width: 430px) {
+    @media (max-width: 600px) {
         &__box {
             flex-direction: column;
+        }
+
+        &__item {
+            gap: unset;
+        }
+
+        &__content {
+            padding-left: 12px;
         }
 
         &__boxLeft,
