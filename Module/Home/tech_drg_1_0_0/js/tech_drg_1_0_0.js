@@ -26,7 +26,7 @@ const renderTech_drg_1_0_0 = async() => {
     const dataTech_drg_1_0_0 = await queryTech_drg_1_0_0();
 
     const mainDiv = document.querySelector('.tech_drg_1_0_0__main');
-    mainDiv.style.minHeight = `${mainDiv.offsetHeight}px`;
+    // mainDiv.style.minHeight = `${mainDiv.offsetHeight}px`;
     const elmsTabTech_drg_1_0_0 = document.querySelectorAll('.tech_drg_1_0_0__item');
     elmsTabTech_drg_1_0_0.forEach((item, index) => {
         item.addEventListener('click', () => {
