@@ -102,6 +102,7 @@
         &__item {
             width: 100%;
             gap: unset;
+            margin-bottom: 18px;
         }
 
         &__content {
@@ -109,7 +110,7 @@
         }
 
         &__box {
-            gap: 15px;
+            gap: unset;
         }
     }
 
