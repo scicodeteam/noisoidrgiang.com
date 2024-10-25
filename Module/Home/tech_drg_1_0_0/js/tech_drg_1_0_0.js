@@ -32,24 +32,26 @@ const renderTech_drg_1_0_0 = async() => {
         item.addEventListener('click', () => {
             i = index + 1;
             const id = item.getAttribute('data-tab');
-            const data = dataTech_drg_1_0_0.filter(item => item.sub === id);
-            renderMainTech_drg_1_0_0(data[0]);
+            const data = dataTech_drg_1_0_0.filter((item, index) => {
+                return index === Number(id);
+            });
+            console.log(id);
+            renderMainTech_drg_1_0_0(data[0], id);
         })
     });
     
     setInterval(() => {
         if(i > 2) i = 0;
-        renderMainTech_drg_1_0_0(dataTech_drg_1_0_0[i]);
+        renderMainTech_drg_1_0_0(dataTech_drg_1_0_0[i], i);
         i++;
     }, 6000)
 };
 
-const renderMainTech_drg_1_0_0 = data => {
+const renderMainTech_drg_1_0_0 = (data, id) => {
     const elmsTabTech_drg_1_0_0 = document.querySelectorAll('.tech_drg_1_0_0__item');
-    elmsTabTech_drg_1_0_0.forEach(item => {
+    elmsTabTech_drg_1_0_0.forEach((item, index) => {
         item.classList.remove('active');
-        const id = item.getAttribute('data-tab');
-        if(id === data.sub){
+        if(Number(id) === index){
             item.classList.add('active');
         }
     })
